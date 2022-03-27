@@ -1,3 +1,4 @@
+#include <opencv2/calib3d.hpp>
 #include "precomp.hpp"
 
 namespace cv {namespace vsac {
@@ -125,7 +126,7 @@ void VSAC::initialize (int state, Ptr<MinimalSolver> &min_solver, Ptr<NonMinimal
     else CV_Error(cv::Error::StsNotImplemented, "Verifier is not imeplemented!");
 
     if (params.getSampler() == ::vsac::SamplingMethod::SAMPLING_PROSAC) {
-        termination = ProsacTerminationCriteria::create(parallel_call ? nullptr : sampler.dynamicCast<ProsacSampler>(), error,
+        termination = ProsacTerminationCriteria::create(parallel_call ? cv::Ptr<cv::vsac::ProsacSampler>() : sampler.dynamicCast<ProsacSampler>(), error,
             points_size, min_sample_size, params.getConfidence(), params.getMaxIters(), 100, 0.05, 0.05, threshold,
             parallel_call ? _termination.dynamicCast<ProsacTerminationCriteria>()->getNonRandomInliers() : std::vector<int>());
     } else if (params.getSampler() == ::vsac::SamplingMethod::SAMPLING_PROGRESSIVE_NAPSAC) {

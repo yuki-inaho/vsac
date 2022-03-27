@@ -699,7 +699,7 @@ public:
     create(const Ptr<Estimator> &estimator_,
            const Ptr<Quality> &quality_, const Ptr<NeighborhoodGraph> &neighborhood_graph_,
            const Ptr<RandomGenerator> &lo_sampler_, double threshold_,
-           double spatial_coherence_term, int gc_iters, Ptr<Termination> termination_= nullptr);
+           double spatial_coherence_term, int gc_iters, Ptr<Termination> termination_= Ptr<Termination>());
 };
 
 //////////////////////////////////// INNER + ITERATIVE LO ///////////////////////////////////////
@@ -720,7 +720,7 @@ public:
            const Ptr<GammaValues> &gamma_generator,
            int max_lo_sample_size, int number_of_irwls_iters_,
            int DoF, double sigma_quantile, double upper_incomplete_of_sigma_quantile,
-           double C_, double maximum_thr, Ptr<Termination> termination_=nullptr);
+           double C_, double maximum_thr, Ptr<Termination> termination_= Ptr<Termination>());
 };
 
 

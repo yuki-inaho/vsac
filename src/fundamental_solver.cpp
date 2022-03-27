@@ -321,7 +321,7 @@ class EpipolarNonMinimalSolverImpl : public EpipolarNonMinimalSolver {
 private:
     const Mat * points_mat;
     Matx33d _T1, _T2;
-    Ptr<NormTransform> normTr = nullptr;
+    Ptr<NormTransform> normTr = Ptr<NormTransform>();
     bool enforce_rank = true, is_fundamental;
 public:
     explicit EpipolarNonMinimalSolverImpl (const Mat &points_, const Matx33d &T1, const Matx33d &T2)
